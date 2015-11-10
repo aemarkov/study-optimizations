@@ -56,8 +56,8 @@ namespace Optimization.Multivariate
 					interval = IntervalFinder.Find(x0.X, finder_h, f_fixed);
 					ak = GoldenRatioMethod.FindMinimum(interval, f_fixed, eps0 / 5);
 					x.X = x0.X + ak * h.X;
-					Logger.WriteContinue("  ak = {0:" + format + "}", ak);
-					Logger.WriteContinue("  x[k+1].X=x[k].X + ak*h.X = {0:" + format + "} + {1:" + format + "} * {2:" + format + "} = {3:" + format + "}", x0.X, ak, h.X, x.X);
+					Logger.WriteContinue("  3. ak = {0:" + format + "}", ak);
+					Logger.WriteContinue("  4. x[k+1].X=x[k].X + ak*h.X = {0:" + format + "} + {1:" + format + "} * {2:" + format + "} = {3:" + format + "}", x0.X, ak, h.X, x.X);
 
 					//Y
 					Logger.WriteContinue("Y");
@@ -65,23 +65,27 @@ namespace Optimization.Multivariate
 					interval = IntervalFinder.Find(x0.Y, finder_h, f_fixed);
 					ak = GoldenRatioMethod.FindMinimum(interval, f_fixed, eps0 / 5);
 					x.Y = x0.Y + ak * h.Y;
-					Logger.WriteContinue("  ak = {0:" + format + "}", ak);
-					Logger.WriteContinue("  x[k+1].Y=x[k].Y + ak*h.Y = {0:" + format + "} + {1:" + format + "} * {2:" + format + "} = {3:" + format + "}", x0.Y, ak, h.Y, x.Y);
+					Logger.WriteContinue("  3. ak = {0:" + format + "}", ak);
+					Logger.WriteContinue("  4. x[k+1].Y=x[k].Y + ak*h.Y = {0:" + format + "} + {1:" + format + "} * {2:" + format + "} = {3:" + format + "}", x0.Y, ak, h.Y, x.Y);
 				}
 				while (!check_equal(x0, x, equal_eps));
 				Logger.Write("x[k+1]==x[k]");
 				var h0 = h;
 
+				if (OptimizationUtils.EuclidNorm(h) <= eps0) break;
+
 				//Уменьшаем шаг
 				h.X = z * h.X;
 				h.Y = z * h.Y;
 
-				Logger.WriteContinue("Уменьшаем шаг: h = {0:" + format + "} * {1:" + format + "} = {2:" + format + "}", z, h0, h);
-			} while (OptimizationUtils.EuclidNorm(h) > eps0);
+				Logger.WriteContinue("9. Уменьшаем шаг: h = {0:" + format + "} * {1:" + format + "} = {2:" + format + "}", z, h0, h);
+				Logger.WriteContinue("Переход на шаг 3");
+			} while (true);
+
 			Logger.Write("||h|| = {0:" + format + "} < eps", OptimizationUtils.EuclidNorm(h));
 			Logger.Write("Минимум найден: {0:" + format + "}", x);
 
-			return new Point2D(0, 0);
+			return x;
 		}
 
 

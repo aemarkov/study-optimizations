@@ -56,6 +56,7 @@
     <Compile Include="Logger\LoggerException.cs" />
     <Compile Include="Optimization\Interval.cs" />
     <Compile Include="Optimization\Multivariate\GaussZeidelMethod.cs" />
+    <Compile Include="Optimization\Multivariate\HookJeevesMethod.cs" />
     <Compile Include="Optimization\OptimizationUtils.cs" />
     <Compile Include="Optimization\Point2D.cs" />
     <Compile Include="Optimization\Univariate\GoldenRatioMethod.cs" />
@@ -73,6 +74,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -87,7 +89,12 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="Resources\test_task.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\task_211.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
