@@ -59,6 +59,8 @@
     <Compile Include="Optimization\Differentiation\AbstractGradientCalc.cs" />
     <Compile Include="Optimization\Differentiation\CentralGradientCalc.cs" />
     <Compile Include="Optimization\Differentiation\RightGradientCalc.cs" />
+    <Compile Include="Optimization\Gradient\AbstractMethod.cs" />
+    <Compile Include="Optimization\Gradient\DFPMethod.cs" />
     <Compile Include="Optimization\Gradient\OptimalGradientMethod.cs" />
     <Compile Include="Optimization\Interval.cs" />
     <Compile Include="Optimization\Unidimensional\GoldenRatioMethod.cs" />

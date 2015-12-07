@@ -9,13 +9,19 @@ namespace Optimization.Differentation
 	class CentralGradientCalc : AbstractGradientCalc
 	{
 		/// <summary>
+		/// Создает новый объект решателья
+		/// </summary>
+		/// <param name="h">Шаг разностоной схемы</param>
+		public CentralGradientCalc(double h):base(h){ }
+
+		/// <summary>
 		/// Вычисляет градиент
 		/// </summary>
 		/// <param name="f">Функция многих переменных</param>
 		/// <param name="x">Точка, в которой ищется производная</param>
 		/// <param name="h">Шаг</param>
 		/// <returns></returns>
-		public override Vector<double> CalcGradient(Func<Vector<double>, double> f, Vector<double> x, double h)
+		public override Vector<double> CalcGradient(Func<Vector<double>, double> f, Vector<double> x)
 		{
 			/*	Центральная разностная схема:
 					  f(x+h)-f(x-h)

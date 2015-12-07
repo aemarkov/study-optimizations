@@ -8,6 +8,17 @@ namespace Optimization.Differentation
 	/// </summary>
 	public abstract class AbstractGradientCalc
 	{
+		private double h;
+
+		/// <summary>
+		/// Создает новый объект решателья
+		/// </summary>
+		/// <param name="h">Шаг разностоной схемы</param>
+		public AbstractGradientCalc(double h)
+		{
+			this.h = h;
+		}
+
 		/// <summary>
 		/// Вычисляет градиент
 		/// </summary>
@@ -15,7 +26,7 @@ namespace Optimization.Differentation
 		/// <param name="x">Точка, в которой ищется производная</param>
 		/// <param name="h">Шаг</param>
 		/// <returns></returns>
-		public abstract Vector<double> CalcGradient(Func<Vector<double>, double> f, Vector<double> x, double h);
+		public abstract Vector<double> CalcGradient(Func<Vector<double>, double> f, Vector<double> x);
 
 
 		//Генерирует вектор исходных координат, где координата с заданным индексом измененеа

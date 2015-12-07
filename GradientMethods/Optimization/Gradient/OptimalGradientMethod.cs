@@ -15,12 +15,23 @@ namespace Optimization.Gradient
 	/// <summary>
 	/// Оптимальный градиентный метод.
 	/// </summary>
-	static class OptimalGradientMethod
+	public class OptimalGradientMethod : AbstractMethod
 	{
-		public static Vector<double> FindMinimum(Func<Vector<double>, double> f, Vector<double> x, AbstractGradientCalc gradient_calc, double h, double eps, out int steps_count)
+
+		/// <summary>
+		/// Минимизация функции
+		/// </summary>
+		/// <param name="f">Функция</param>
+		/// <param name="x">Начальное приближение</param>
+		/// <param name="gradient_calc">Функция вычисление градиента</param>
+		/// <param name="eps">Точность</param>
+		/// <param name="steps_count">Возвращаемое значение: число шагов, за которое был найден ответ</param>
+		/// <returns></returns>
+		override public Vector<double> FindMinimum(Func<Vector<double>, double> f, Vector<double> x, AbstractGradientCalc gradient_calc, double eps, out int steps_count)
 		{
 			Vector<double> grad = null;
 
+			///!!!!!!!!!
 			double interval_h = 0.0001;     //Шаг для поиска интервала
 			double min_eps = 0.0001;       //Точность для поиска минимума
 			string g_s;
@@ -28,7 +39,7 @@ namespace Optimization.Gradient
 			steps_count = 0;
 
 			//Вычисление градиента
-			grad = gradient_calc.CalcGradient(f, x, h);
+			grad = gradient_calc.CalcGradient(f, x);
 			g_s = grad.Vector2String("N4");
 
 			while(calc_norm(grad)>eps)
@@ -42,7 +53,7 @@ namespace Optimization.Gradient
 				//Шаг
 				x = x - a * grad;
 				g_s = x.Vector2String("N2");
-				grad = gradient_calc.CalcGradient(f, x, h);
+				grad = gradient_calc.CalcGradient(f, x);
 				g_s = grad.Vector2String("N4");
 
 				steps_count++;
@@ -51,15 +62,5 @@ namespace Optimization.Gradient
 			return x;
 		}
 
-
-		//Расчет Евклидовой нормы
-		private static double calc_norm(Vector<double> v)
-		{
-			double sum = 0;
-			foreach (var x in v)
-				sum += x * x;
-
-			return Math.Sqrt(sum);
-		}
 	}
 }

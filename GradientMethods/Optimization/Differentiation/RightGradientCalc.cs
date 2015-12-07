@@ -8,14 +8,21 @@ namespace Optimization.Differentation
 	/// </summary>
 	class RightGradientCalc : AbstractGradientCalc
 	{
-		 /// <summary>
-		 /// Вычисляет градиент
-		 /// </summary>
-		 /// <param name="f">Функция многих переменных</param>
-		 /// <param name="x">Точка, в которой ищется производная</param>
-		 /// <param name="h">Шаг</param>
-		 /// <returns></returns>
-			public override Vector<double> CalcGradient(Func<Vector<double>, double> f, Vector<double> x, double h)
+		/// <summary>
+		/// Создает новый объект решателья
+		/// </summary>
+		/// <param name="h">Шаг разностоной схемы</param>
+		public RightGradientCalc(double h):base(h){ }
+
+
+		/// <summary>
+		/// Вычисляет градиент
+		/// </summary>
+		/// <param name="f">Функция многих переменных</param>
+		/// <param name="x">Точка, в которой ищется производная</param>
+		/// <param name="h">Шаг</param>
+		/// <returns></returns>
+		public override Vector<double> CalcGradient(Func<Vector<double>, double> f, Vector<double> x)
 			{
 				/*	Правая разностная схема:
 						  f(x+h)-f(x)
