@@ -60,6 +60,9 @@
     <Compile Include="Optimization\Differentiation\CentralGradientCalc.cs" />
     <Compile Include="Optimization\Differentiation\RightGradientCalc.cs" />
     <Compile Include="Optimization\Gradient\OptimalGradientMethod.cs" />
+    <Compile Include="Optimization\Interval.cs" />
+    <Compile Include="Optimization\Unidimensional\GoldenRatioMethod.cs" />
+    <Compile Include="Optimization\Unidimensional\ItervalFinder.cs" />
     <Compile Include="Optimization\Utils.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
