@@ -56,7 +56,8 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="Optimization\Differentiation\IGradientCalc.cs" />
+    <Compile Include="Optimization\Gradient\AbstractGradientCalc.cs" />
+    <Compile Include="Optimization\Gradient\CentralGradientSolver.cs" />
     <Compile Include="Optimization\Gradient\OptimalGradientMethod.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 using MathNet.Numerics.LinearAlgebra;
+using Optimization.Differentation;
 
 namespace GradientMethods
 {
@@ -18,17 +19,11 @@ namespace GradientMethods
 		{
 			InitializeComponent();
 
-			Vector<double> a = Vector<double>.Build.Dense(2);
-			Vector<double> b = Vector<double>.Build.Dense(2);
-			a[0] = 1;
-			a[1] = 5;
+			Vector<double> a = Vector<double>.Build.DenseOfArray(new double[] { 1, 1 });
+			Func<Vector<double>, double> f = x => x[0]*x[0] + x[1]*x[1];
 
-			b[0] = 2;
-			b[1] = 3;
-
-			var c = a + b;
-
-			var f = c[0];
+			var grad = (new CentralGradientSolver()).CalcGradient(f, a, 0.1);
+			int b = 0;
 		}
 	}
 }
