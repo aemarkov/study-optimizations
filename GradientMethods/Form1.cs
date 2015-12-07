@@ -20,6 +20,11 @@ namespace GradientMethods
 		public Form1()
 		{
 			InitializeComponent();
+			SimpleLogger.Logger.Setup(logToDebug: true, addDateTime: false, isDisable:true);
+			SimpleLogger.Logger.MessageWrited += Logger_MessageWrited;
+
+
+			//Инициализация логгера
 
 			Vector<double> x0 = Vector<double>.Build.DenseOfArray(new double[] { 3, -1, 0, 1});
 			Func<Vector<double>, double> f = x=>Math.Pow(x[0]+10*x[1],2)+
@@ -35,10 +40,17 @@ namespace GradientMethods
 
 
 			int steps;
-			Vector <double> min =  (new DFPMethod()).FindMinimum(f, x0, new CentralGradientCalc(), 0.01, 0.01, out steps);
+			Vector <double> min =  (new DFPMethod()).FindMinimum(f, x0, new CentralGradientCalc(0.01), 0.1, out steps);
 			string mins = min.Vector2String("N3");
 			int a = 0;
 
+		}
+
+		//Отображение лога
+		private void Logger_MessageWrited(string message)
+		{
+			//throw new NotImplementedException();
+			
 		}
 	}
 }

@@ -56,6 +56,8 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Logger\Logger.cs" />
+    <Compile Include="Logger\LoggerException.cs" />
     <Compile Include="Optimization\Differentiation\AbstractGradientCalc.cs" />
     <Compile Include="Optimization\Differentiation\CentralGradientCalc.cs" />
     <Compile Include="Optimization\Differentiation\RightGradientCalc.cs" />

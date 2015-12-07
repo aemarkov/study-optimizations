@@ -8,7 +8,7 @@ namespace Optimization.Differentation
 	/// </summary>
 	public abstract class AbstractGradientCalc
 	{
-		private double h;
+		protected double h;
 
 		/// <summary>
 		/// Создает новый объект решателья
