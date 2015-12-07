@@ -20,21 +20,21 @@ namespace GradientMethods
 		public Form1()
 		{
 			InitializeComponent();
-			SimpleLogger.Logger.Setup(logToDebug: true, addDateTime: false);
+			SimpleLogger.Logger.Setup(logToDebug: true, addDateTime: false, isDisable: true);
 			SimpleLogger.Logger.MessageWrited += Logger_MessageWrited;
 
 
 			//Инициализация логгера
 
-			/*Vector<double> x0 = Vector<double>.Build.DenseOfArray(new double[] {3,-1,0,1});
+			Vector<double> x0 = Vector<double>.Build.DenseOfArray(new double[] {3,-1,0,1});
 			Func<Vector<double>, double> f = x=>Math.Pow(
 				x[0]+10*x[1],2)+
 				5*Math.Pow(x[2]-x[3],2)+
 				Math.Pow(x[1]-2*x[2],4)+
-				10*Math.Pow(x[0]-x[3],4);*/
+				10*Math.Pow(x[0]-x[3],4);
 
-			Vector<double> x0 = Vector<double>.Build.DenseOfArray(new double[] { 1,1 });
-			Func<Vector<double>, double> f = x => 4*Math.Pow(x[0], 2) + Math.Pow(x[1], 2);
+			//Vector<double> x0 = Vector<double>.Build.DenseOfArray(new double[] { 100,100 });
+			//Func<Vector<double>, double> f = x => Math.Pow(x[0], 2) + Math.Pow(x[1], 2);
 
 			//Vector<double> x0 = Vector<double>.Build.DenseOfArray(new double[] { -20, 1 });
 			//Func<Vector<double>, double> f = x => Math.Pow(x[0]*x[0]+x[1]-11,2) + Math.Pow(x[0] + x[1]*x[1]-7, 2);
