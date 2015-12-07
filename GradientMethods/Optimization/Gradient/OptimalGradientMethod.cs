@@ -77,6 +77,7 @@ namespace Optimization.Gradient
 
 				steps_count++;
 				Logger.Write("Шаг 6: k = k +1 = {0}", steps_count);
+				Logger.Write("----------------------");
 			}
 
 			Logger.Write("Шаг 3: Проверка критерия останова:");
