@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 using MathNet.Numerics.LinearAlgebra;
 
-using Optimization;
+using System.Diagnostics;
 using Optimization.Differentation;
 using Optimization.Unidimensional;
 using SimpleLogger;
@@ -33,8 +33,8 @@ namespace Optimization.Gradient
 			Vector<double> grad = null;
 
 			///!!!!!!!!!
-			double interval_h = 0.0001;						//Шаг для поиска интервала
-			double min_eps = 0.0001;						//Точность для поиска минимума
+			double interval_h = 0.000001;					//Шаг для поиска интервала
+			double min_eps = 0.000001;						//Точность для поиска минимума
 			string format = Utils.GetFormat(eps);			//Форматная строка для вывода чисел с нужным числом знаков
 			steps_count = 0;
 			double norm = 0;
@@ -49,8 +49,10 @@ namespace Optimization.Gradient
 			//Вычисление градиента
 			grad = gradient_calc.CalcGradient(f, x);
 
-			while(calc_norm(grad)>eps)
+			while((norm=calc_norm(grad))>eps)
 			{
+				Debug.WriteLine("Grad: {0} fuck", "kek");
+
 				Logger.Write("Шаг 2: Вычисление градиента");
 				Logger.WriteContinue("grad = {0}", grad.Vector2String(format));
 
@@ -69,7 +71,8 @@ namespace Optimization.Gradient
 
 				//Шаг
 				x = x - a * grad;
-				Logger.Write("Шаг 5: Xk+1 = Xk + a*grad = {0}", x);
+				//Debug.WriteLine("x: {0}", x.Vector2String("N3"));
+				Logger.Write("Шаг 5: Xk+1 = Xk + a*grad = {0}", x.Vector2String(format));
 				grad = gradient_calc.CalcGradient(f, x);
 
 				steps_count++;
@@ -82,6 +85,7 @@ namespace Optimization.Gradient
 
 			Logger.Write("Шаг 8: x* = x = {0}", x);
 			Logger.WriteContinue("Поиск закончен");
+			Logger.WriteContinue("Число итераций: {0}", steps_count);
 
 			return x;
 		}
