@@ -26,7 +26,7 @@ namespace SimpleLogger
 		//////////////// SINGLETONE /////////////////////////////////////////////////////
 
 
-		private static volatile Logger _instance;			// Экземпляр логгера
+		private static volatile Logger _instance;           // Экземпляр логгера
 		private static object _syncRoot = new object();     // Объект синхронизации
 
 		// Конструктор с параметрами по-умолчанию
@@ -38,7 +38,7 @@ namespace SimpleLogger
 		}
 
 		// Конструктор с настройками
-		private Logger(string filename, bool logToDebug, bool addDateTime, string dateTimeFormat, bool isDisable):this()
+		private Logger(string filename, bool logToDebug, bool addDateTime, string dateTimeFormat, bool isDisable) : this()
 		{
 			_logToDebug = logToDebug;
 			_addDateTime = addDateTime;
@@ -49,7 +49,7 @@ namespace SimpleLogger
 			if (filename != null)
 				_filename = filename;
 			else
-				_filename = DateTime.Now.ToString(_dateTimeFormat).Replace(" ", "___").Replace(':', '_').Replace('.', '_') +".txt";
+				_filename = DateTime.Now.ToString(_dateTimeFormat).Replace(" ", "___").Replace(':', '_').Replace('.', '_') + ".txt";
 		}
 
 		// Возвращает или создает и возвращает экземпляр
@@ -78,7 +78,7 @@ namespace SimpleLogger
 								 bool logToDebug = false,
 								 bool addDateTime = true,
 								 bool isDisable = false,
-								 string dateTimeFormat="yyyy.mm.dd HH:mm:ss")
+								 string dateTimeFormat = "yyyy.mm.dd HH:mm:ss")
 		{
 			if (_instance == null)
 			{
@@ -94,9 +94,14 @@ namespace SimpleLogger
 				throw new LoggerAlreadySetupException();
 		}
 
-		
+
 
 		///////////// INTERFACE /////////////////////////////////////////////////////
+
+		public static void Enable(bool enable)
+		{
+			Instance._enable(enable);
+        }
 
 		/// <summary>
 		/// Записывает строку в лог в новый блок
@@ -137,6 +142,11 @@ namespace SimpleLogger
 		}
 
 		//////////// REALISATION ////////////////////////////////////////////////////]
+
+		void _enable(bool enable)
+		{
+			_isDisabled = !enable;
+		}
 
 		// Пишет в лог форматированную строку
 		private void _write(string format, bool isNewBlock, params Object[] args)

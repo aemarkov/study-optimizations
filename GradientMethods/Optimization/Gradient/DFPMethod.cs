@@ -52,8 +52,8 @@ namespace Optimization.Gradient
 				Logger.WriteContinue("grad = {0}", grad.Vector2String(format));
 
 				Logger.Write("Шаг 3: Проверка критерия останова:");
-				Logger.WriteContinue("Норма norm = {0}", norm);
-				Logger.WriteContinue("norm > eps : {0} > {1}", norm, eps);
+				Logger.WriteContinue("Норма norm = {0}", norm.ToString(format));
+				Logger.WriteContinue("norm > eps : {0} > {1}", norm.ToString(format), eps.ToString(format));
 
 				if (steps_count>0)
 				{
@@ -103,8 +103,8 @@ namespace Optimization.Gradient
 			}
 
 			Logger.Write("Шаг 3: Проверка критерия останова:");
-			Logger.WriteContinue("Норма norm = {0}", norm);
-			Logger.WriteContinue("norm <= eps : {0} <= {1}", norm, eps);
+			Logger.WriteContinue("Норма norm = {0}", norm.ToString(format));
+			Logger.WriteContinue("norm > eps : {0} > {1}", norm.ToString(format), eps.ToString(format));
 
 			Logger.Write("Шаг 12: x* = x = {0}", x.Vector2String(format));
 			Logger.WriteContinue("Поиск закончен");

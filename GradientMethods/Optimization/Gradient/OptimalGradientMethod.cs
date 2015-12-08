@@ -35,7 +35,7 @@ namespace Optimization.Gradient
 			///!!!!!!!!!
 			double interval_h = 0.000001;					//Шаг для поиска интервала
 			double min_eps = 0.000001;						//Точность для поиска минимума
-			string format = Utils.GetFormat(eps);			//Форматная строка для вывода чисел с нужным числом знаков
+			string format = Utils.GetFormat(eps/100);		//Форматная строка для вывода чисел с нужным числом знаков
 			steps_count = 0;
 			double norm = 0;
 
@@ -57,8 +57,8 @@ namespace Optimization.Gradient
 				Logger.WriteContinue("grad = {0}", grad.Vector2String(format));
 
 				Logger.Write("Шаг 3: Проверка критерия останова:");
-				Logger.WriteContinue("Норма norm = {0}", norm);
-				Logger.WriteContinue("norm > eps : {0} > {1}", norm, eps);
+				Logger.WriteContinue("Норма norm = {0}", norm.ToString(format));
+				Logger.WriteContinue("norm > eps : {0} > {1}", norm.ToString(format), eps.ToString(format));
 
 				//Вычисление длины шага
 				//ak = arg min f(x-a*gradf(x));
@@ -67,7 +67,7 @@ namespace Optimization.Gradient
 				var a = GoldenRatioMethod.FindMinimum(interval, f_, min_eps);
 
 				Logger.Write("Шаг 4: Определение длины шага");
-				Logger.WriteContinue("ak = {0}", a);
+				Logger.WriteContinue("ak = {0}", a.ToString(format));
 
 				//Шаг
 				x = x - a * grad;
@@ -81,10 +81,10 @@ namespace Optimization.Gradient
 			}
 
 			Logger.Write("Шаг 3: Проверка критерия останова:");
-			Logger.WriteContinue("Норма norm = {0}", norm);
-			Logger.WriteContinue("norm <= eps : {0} <= {1}", norm, eps);
+			Logger.WriteContinue("Норма norm = {0}", norm.ToString(format));
+			Logger.WriteContinue("norm > eps : {0} > {1}", norm.ToString(format), eps.ToString(format));
 
-			Logger.Write("Шаг 8: x* = x = {0}", x);
+			Logger.Write("Шаг 8: x* = x = {0}", x.Vector2String(format));
 			Logger.WriteContinue("Поиск закончен");
 			Logger.WriteContinue("Число итераций: {0}", steps_count);
 

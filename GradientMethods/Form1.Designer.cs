@@ -40,15 +40,17 @@
 			this.txtOut = new System.Windows.Forms.TextBox();
 			this.txtLog = new System.Windows.Forms.TextBox();
 			this.groupBox3 = new System.Windows.Forms.GroupBox();
-			this.txtEps = new System.Windows.Forms.TextBox();
-			this.txtX0Y = new System.Windows.Forms.TextBox();
-			this.label3 = new System.Windows.Forms.Label();
-			this.txtX0X = new System.Windows.Forms.TextBox();
-			this.label1 = new System.Windows.Forms.Label();
-			this.rbRight = new System.Windows.Forms.RadioButton();
-			this.rbCenter = new System.Windows.Forms.RadioButton();
-			this.txtH = new System.Windows.Forms.TextBox();
 			this.label2 = new System.Windows.Forms.Label();
+			this.txtH = new System.Windows.Forms.TextBox();
+			this.rbCenter = new System.Windows.Forms.RadioButton();
+			this.rbRight = new System.Windows.Forms.RadioButton();
+			this.txtEps = new System.Windows.Forms.TextBox();
+			this.label3 = new System.Windows.Forms.Label();
+			this.txtX = new System.Windows.Forms.TextBox();
+			this.label1 = new System.Windows.Forms.Label();
+			this.chkLog = new System.Windows.Forms.CheckBox();
+			this.label4 = new System.Windows.Forms.Label();
+			this.txtIter = new System.Windows.Forms.TextBox();
 			this.groupBox1.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -93,6 +95,7 @@
 			// 
 			// pictureBox2
 			// 
+			this.pictureBox2.BackgroundImage = global::GradientMethods.Properties.Resources.task_213;
 			this.pictureBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
 			this.pictureBox2.Location = new System.Drawing.Point(34, 51);
 			this.pictureBox2.Name = "pictureBox2";
@@ -102,6 +105,7 @@
 			// 
 			// pictureBox1
 			// 
+			this.pictureBox1.BackgroundImage = global::GradientMethods.Properties.Resources.test_task;
 			this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
 			this.pictureBox1.Location = new System.Drawing.Point(34, 19);
 			this.pictureBox1.Name = "pictureBox1";
@@ -170,19 +174,19 @@
 			this.txtLog.Multiline = true;
 			this.txtLog.Name = "txtLog";
 			this.txtLog.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-			this.txtLog.Size = new System.Drawing.Size(570, 328);
+			this.txtLog.Size = new System.Drawing.Size(570, 361);
 			this.txtLog.TabIndex = 6;
 			// 
 			// groupBox3
 			// 
+			this.groupBox3.Controls.Add(this.chkLog);
 			this.groupBox3.Controls.Add(this.label2);
 			this.groupBox3.Controls.Add(this.txtH);
 			this.groupBox3.Controls.Add(this.rbCenter);
 			this.groupBox3.Controls.Add(this.rbRight);
 			this.groupBox3.Controls.Add(this.txtEps);
-			this.groupBox3.Controls.Add(this.txtX0Y);
 			this.groupBox3.Controls.Add(this.label3);
-			this.groupBox3.Controls.Add(this.txtX0X);
+			this.groupBox3.Controls.Add(this.txtX);
 			this.groupBox3.Controls.Add(this.label1);
 			this.groupBox3.Location = new System.Drawing.Point(13, 177);
 			this.groupBox3.Name = "groupBox3";
@@ -191,58 +195,22 @@
 			this.groupBox3.TabStop = false;
 			this.groupBox3.Text = "Параметры";
 			// 
-			// txtEps
+			// label2
 			// 
-			this.txtEps.Location = new System.Drawing.Point(169, 49);
-			this.txtEps.Name = "txtEps";
-			this.txtEps.Size = new System.Drawing.Size(160, 20);
-			this.txtEps.TabIndex = 7;
-			this.txtEps.Text = "0,1";
+			this.label2.AutoSize = true;
+			this.label2.Location = new System.Drawing.Point(11, 78);
+			this.label2.Name = "label2";
+			this.label2.Size = new System.Drawing.Size(27, 13);
+			this.label2.TabIndex = 11;
+			this.label2.Text = "Шаг";
 			// 
-			// txtX0Y
+			// txtH
 			// 
-			this.txtX0Y.Location = new System.Drawing.Point(252, 23);
-			this.txtX0Y.Name = "txtX0Y";
-			this.txtX0Y.Size = new System.Drawing.Size(77, 20);
-			this.txtX0Y.TabIndex = 4;
-			this.txtX0Y.Text = "0";
-			// 
-			// label3
-			// 
-			this.label3.AutoSize = true;
-			this.label3.Location = new System.Drawing.Point(11, 52);
-			this.label3.Name = "label3";
-			this.label3.Size = new System.Drawing.Size(54, 13);
-			this.label3.TabIndex = 3;
-			this.label3.Text = "Точность";
-			// 
-			// txtX0X
-			// 
-			this.txtX0X.Location = new System.Drawing.Point(169, 23);
-			this.txtX0X.Name = "txtX0X";
-			this.txtX0X.Size = new System.Drawing.Size(77, 20);
-			this.txtX0X.TabIndex = 1;
-			this.txtX0X.Text = "0";
-			// 
-			// label1
-			// 
-			this.label1.AutoSize = true;
-			this.label1.Location = new System.Drawing.Point(11, 23);
-			this.label1.Name = "label1";
-			this.label1.Size = new System.Drawing.Size(133, 13);
-			this.label1.TabIndex = 0;
-			this.label1.Text = "Начальное приближение";
-			// 
-			// rbRight
-			// 
-			this.rbRight.AutoSize = true;
-			this.rbRight.Checked = true;
-			this.rbRight.Location = new System.Drawing.Point(14, 101);
-			this.rbRight.Name = "rbRight";
-			this.rbRight.Size = new System.Drawing.Size(159, 17);
-			this.rbRight.TabIndex = 8;
-			this.rbRight.Text = "Правая разностная схема";
-			this.rbRight.UseVisualStyleBackColor = true;
+			this.txtH.Location = new System.Drawing.Point(169, 75);
+			this.txtH.Name = "txtH";
+			this.txtH.Size = new System.Drawing.Size(160, 20);
+			this.txtH.TabIndex = 10;
+			this.txtH.Text = "0,1";
 			// 
 			// rbCenter
 			// 
@@ -254,29 +222,90 @@
 			this.rbCenter.Text = "Центральная разностная схема";
 			this.rbCenter.UseVisualStyleBackColor = true;
 			// 
-			// txtH
+			// rbRight
 			// 
-			this.txtH.Location = new System.Drawing.Point(169, 75);
-			this.txtH.Name = "txtH";
-			this.txtH.Size = new System.Drawing.Size(160, 20);
-			this.txtH.TabIndex = 10;
-			this.txtH.Text = "0,1";
+			this.rbRight.AutoSize = true;
+			this.rbRight.Checked = true;
+			this.rbRight.Location = new System.Drawing.Point(14, 101);
+			this.rbRight.Name = "rbRight";
+			this.rbRight.Size = new System.Drawing.Size(159, 17);
+			this.rbRight.TabIndex = 8;
+			this.rbRight.TabStop = true;
+			this.rbRight.Text = "Правая разностная схема";
+			this.rbRight.UseVisualStyleBackColor = true;
 			// 
-			// label2
+			// txtEps
 			// 
-			this.label2.AutoSize = true;
-			this.label2.Location = new System.Drawing.Point(11, 78);
-			this.label2.Name = "label2";
-			this.label2.Size = new System.Drawing.Size(27, 13);
-			this.label2.TabIndex = 11;
-			this.label2.Text = "Шаг";
+			this.txtEps.Location = new System.Drawing.Point(169, 49);
+			this.txtEps.Name = "txtEps";
+			this.txtEps.Size = new System.Drawing.Size(160, 20);
+			this.txtEps.TabIndex = 7;
+			this.txtEps.Text = "0,1";
+			// 
+			// label3
+			// 
+			this.label3.AutoSize = true;
+			this.label3.Location = new System.Drawing.Point(11, 52);
+			this.label3.Name = "label3";
+			this.label3.Size = new System.Drawing.Size(54, 13);
+			this.label3.TabIndex = 3;
+			this.label3.Text = "Точность";
+			// 
+			// txtX
+			// 
+			this.txtX.Location = new System.Drawing.Point(169, 23);
+			this.txtX.Name = "txtX";
+			this.txtX.Size = new System.Drawing.Size(160, 20);
+			this.txtX.TabIndex = 1;
+			this.txtX.Text = "0;0";
+			// 
+			// label1
+			// 
+			this.label1.AutoSize = true;
+			this.label1.Location = new System.Drawing.Point(11, 23);
+			this.label1.Name = "label1";
+			this.label1.Size = new System.Drawing.Size(133, 13);
+			this.label1.TabIndex = 0;
+			this.label1.Text = "Начальное приближение";
+			// 
+			// chkLog
+			// 
+			this.chkLog.AutoSize = true;
+			this.chkLog.Checked = true;
+			this.chkLog.CheckState = System.Windows.Forms.CheckState.Checked;
+			this.chkLog.Location = new System.Drawing.Point(234, 124);
+			this.chkLog.Name = "chkLog";
+			this.chkLog.Size = new System.Drawing.Size(95, 17);
+			this.chkLog.TabIndex = 12;
+			this.chkLog.Text = "Включить лог";
+			this.chkLog.UseVisualStyleBackColor = true;
+			this.chkLog.CheckedChanged += new System.EventHandler(this.chkLog_CheckedChanged);
+			// 
+			// label4
+			// 
+			this.label4.AutoSize = true;
+			this.label4.Location = new System.Drawing.Point(12, 357);
+			this.label4.Name = "label4";
+			this.label4.Size = new System.Drawing.Size(92, 13);
+			this.label4.TabIndex = 8;
+			this.label4.Text = "Число итераций:";
+			// 
+			// txtIter
+			// 
+			this.txtIter.Location = new System.Drawing.Point(181, 356);
+			this.txtIter.Name = "txtIter";
+			this.txtIter.ReadOnly = true;
+			this.txtIter.Size = new System.Drawing.Size(172, 20);
+			this.txtIter.TabIndex = 9;
 			// 
 			// Form1
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.BackColor = System.Drawing.Color.White;
-			this.ClientSize = new System.Drawing.Size(942, 369);
+			this.ClientSize = new System.Drawing.Size(942, 402);
+			this.Controls.Add(this.txtIter);
+			this.Controls.Add(this.label4);
 			this.Controls.Add(this.groupBox3);
 			this.Controls.Add(this.txtLog);
 			this.Controls.Add(this.txtOut);
@@ -312,15 +341,17 @@
 		private System.Windows.Forms.TextBox txtOut;
 		private System.Windows.Forms.TextBox txtLog;
 		private System.Windows.Forms.GroupBox groupBox3;
-		private System.Windows.Forms.TextBox txtX0X;
+		private System.Windows.Forms.TextBox txtX;
 		private System.Windows.Forms.Label label1;
 		private System.Windows.Forms.TextBox txtEps;
-		private System.Windows.Forms.TextBox txtX0Y;
 		private System.Windows.Forms.Label label3;
 		private System.Windows.Forms.RadioButton rbCenter;
 		private System.Windows.Forms.RadioButton rbRight;
 		private System.Windows.Forms.Label label2;
 		private System.Windows.Forms.TextBox txtH;
+		private System.Windows.Forms.CheckBox chkLog;
+		private System.Windows.Forms.Label label4;
+		private System.Windows.Forms.TextBox txtIter;
 	}
 }
 
