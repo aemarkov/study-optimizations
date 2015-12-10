@@ -9,7 +9,7 @@ namespace Optimization
 	/// Названия выбраны не слишком очевидно, чтобы
 	/// не делать использование класса громоздким
 	/// </summary>
-	public struct Interval
+	public class Interval
 	{
 		/// <summary>
 		/// Начало интервала

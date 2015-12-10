@@ -12,7 +12,7 @@ namespace Optimization.Differentation
 		/// Создает новый объект решателья
 		/// </summary>
 		/// <param name="h">Шаг разностоной схемы</param>
-		public RightGradientCalc(double h):base(h){ }
+		public RightGradientCalc(double h) : base(h) { }
 
 
 		/// <summary>
@@ -23,28 +23,28 @@ namespace Optimization.Differentation
 		/// <param name="h">Шаг</param>
 		/// <returns></returns>
 		public override Vector<double> CalcGradient(Func<Vector<double>, double> f, Vector<double> x)
+		{
+			/*	Правая разностная схема:
+					  f(x+h)-f(x)
+				f(x)= ------------
+						  2
+
+				В частных производных:
+				x1 = (f(x1+h, x2,...,xn)-f(x1, x2,...,xn))/h
+				x1 = (f(x1, x2+h,...,xn)-f(x1, x2,...,xn))/h
+				ну ты понел...
+			*/
+
+			var gradient = Vector<double>.Build.Dense(x.Count);         //Создаем вектор такой же размерности
+
+			//Расчет градиента
+			for (int i = 0; i < x.Count; i++)
 			{
-				/*	Правая разностная схема:
-						  f(x+h)-f(x)
-					f(x)= ------------
-							  2
-				
-					В частных производных:
-					x1 = (f(x1+h, x2,...,xn)-f(x1, x2,...,xn))/h
-					x1 = (f(x1, x2+h,...,xn)-f(x1, x2,...,xn))/h
-					ну ты понел...
-				*/
-
-				var gradient = Vector<double>.Build.Dense(x.Count);         //Создаем вектор такой же размерности
-				
-				//Расчет градиента
-				for (int i = 0; i < x.Count; i++)
-				{
-					var x_1 = build_vector(x, i, h);
-					gradient[i] = (f(x_1) - f(x)) / h;
-				}
-
-				return gradient;
+				var x_1 = build_vector(x, i, h);
+				gradient[i] = (f(x_1) - f(x)) / h;
 			}
+
+			return gradient;
+		}
 	}
 }
