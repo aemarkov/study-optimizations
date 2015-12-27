@@ -63,15 +63,16 @@
     <Compile Include="Optimization\Differentiation\AbstractGradientCalc.cs" />
     <Compile Include="Optimization\Differentiation\CentralGradientCalc.cs" />
     <Compile Include="Optimization\Differentiation\RightGradientCalc.cs" />
-    <Compile Include="Optimization\Gradient\AbstractMethod.cs" />
     <Compile Include="Optimization\Gradient\DFPMethod.cs" />
-    <Compile Include="Optimization\Gradient\OptimalGradientMethod.cs" />
     <Compile Include="Optimization\Interval.cs" />
     <Compile Include="Optimization\Unidimensional\GoldenRatioMethod.cs" />
     <Compile Include="Optimization\Unidimensional\ItervalFinder.cs" />
     <Compile Include="Optimization\Utils.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>

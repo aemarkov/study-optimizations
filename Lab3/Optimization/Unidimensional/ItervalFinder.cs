@@ -64,7 +64,7 @@ namespace Optimization.Unidimensional
 			{
 				xk_prev = xk;
 				fk_prev = f(xk);
-				xk = x0 + Math.Pow(2, k - 1) * h;
+				xk = x0 +  Math.Pow(1.5, k - 1) * h;
 				fk = f(xk);
 
 				if (fk_prev <= fk)

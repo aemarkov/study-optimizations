@@ -69,8 +69,8 @@ namespace Optimization.BarrierFunctions
 				//!!! (3)
 				//Минимизируем
 				//!!! (4)
-				min_x = gradient_method.FindMinimum(F, x0, gradient_calc, eps/10, out steps);
-				bool is_in = check_in_D0(min_x, borders);
+				min_x = gradient_method.FindMinimum(F, x0, gradient_calc, eps/10, out steps, borders);
+				bool is_in = Utils.CheckInD0(min_x, borders);
 
 				//4. 
 				//Вычисляем какую-то хрень
@@ -112,15 +112,6 @@ namespace Optimization.BarrierFunctions
 			return -Math.Log(fx);
 		}
 
-
-		private static bool check_in_D0(Vector<double> vec, Func<Vector<double>, double>[] borders)
-		{
-			bool is_corr = true;
-			foreach (var b in borders)
-				is_corr &= b(vec) >= 0;
-
-			return is_corr;
-		}
 
 		//[НЕ НУЖНО]
 		//Уменьшает размерность вектора, отбирая последнее измереение

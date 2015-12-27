@@ -5,7 +5,7 @@ using Optimization.Unidimensional;
 
 namespace Optimization.Gradient
 {
-	public class DFPMethod : AbstractMethod
+	public class DFPMethod
 	{
 
 		/// <summary>
@@ -17,11 +17,11 @@ namespace Optimization.Gradient
 		/// <param name="eps">Точность</param>
 		/// <param name="steps_count">Возвращаемое значение: число шагов, за которое был найден ответ</param>
 		/// <returns></returns>
-		override public Vector<double> FindMinimum(Func<Vector<double>, double> f, Vector<double> x, AbstractGradientCalc gradient_calc, double eps, out int steps_count)
+		public Vector<double> FindMinimum(Func<Vector<double>, double> f, Vector<double> x, AbstractGradientCalc gradient_calc, double eps, out int steps_count, Func<Vector<double>, double>[] borders)
 		{
 			///!!!!!!!!!
-			double interval_h = 0.0001;					//Шаг для поиска интервала
-			double min_eps = 0.0001;					//Точность для поиска минимума
+			double interval_h = eps;					//Шаг для поиска интервала
+			double min_eps = eps;					//Точность для поиска минимума
 			steps_count = 0;							//Число шагов
 			string format = Utils.GetFormat(eps);
 			double norm;
@@ -38,7 +38,7 @@ namespace Optimization.Gradient
 			//Вычисление градиента
 			grad = gradient_calc.CalcGradient(f, x);
 			
-			while ((norm=calc_norm(grad)) > eps)
+			while (((norm=Utils.CalcNorm(grad)) > eps)&&(steps_count<3000))
 			{
 
 				if (steps_count>0)
@@ -65,9 +65,12 @@ namespace Optimization.Gradient
 				Func<double, double> f_ = y => f(x + y * p);
 				var interval = IntervalFinder.Find(0, interval_h, f_);
 				var a = GoldenRatioMethod.FindMinimum(interval, f_, min_eps);
-
+				
 				x.CopyTo(x_prev);
 				x = x + a * p;
+
+				//WTF
+				//if (!Utils.CheckInD0(x, borders)) return x;
 
 				//Вычисление градиента
 				grad.CopyTo(grad_prev);

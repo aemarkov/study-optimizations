@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿using System;
+using System.Text;
 using System.Globalization;
 
 using MathNet.Numerics.LinearAlgebra;
@@ -49,5 +50,31 @@ namespace Optimization
 			sb.Append(")");
 			return sb.ToString();
 		}
+
+		/// <summary>
+		/// Проверка принадлежности точки области
+		/// </summary>
+		/// <param name="vec"></param>
+		/// <param name="borders"></param>
+		/// <returns></returns>
+		public static bool CheckInD0(Vector<double> vec, Func<Vector<double>, double>[] borders)
+		{
+			bool is_corr = true;
+			foreach (var b in borders)
+				is_corr &= b(vec) >= 0;
+
+			return is_corr;
+		}
+
+		//Расчет Евклидовой нормы
+		public static double CalcNorm(Vector<double> v)
+		{
+			double sum = 0;
+			foreach (var x in v)
+				sum += x * x;
+
+			return Math.Sqrt(sum);
+		}
+
 	}
 }
